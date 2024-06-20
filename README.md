@@ -39,66 +39,77 @@ MyProject/
 
 1. **Create the Source Directory and Source File**
 
-Create a directory for your project (`MyProject`) and a source file (`main.cpp`) with the following content:
+    Create a directory for your project (`MyProject`) and a source file (`main.cpp`) with the following content:
 
-```cpp
-// src/main.cpp
-#include <iostream>
+    ```cpp
+    // src/main.cpp
+    #include <iostream>
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
-```
+    int main() {
+        std::cout << "Hello, World!" << std::endl;
+        return 0;
+    }
+    ```
 
 2. **Write the `CMakeLists.txt` File**
 
-Create a `CMakeLists.txt` file in the `MyProject` directory with the following content:
+    Create a `CMakeLists.txt` file in the `MyProject` directory with the following content:
 
-```cmake
-# Specify the minimum version of CMake required
-cmake_minimum_required(VERSION 3.10)
+    ```cmake
+    # Specify the minimum version of CMake required
+    cmake_minimum_required(VERSION 3.10)
 
-# Set the project name
-project(MyProject)
+    # Set the project name
+    project(MyProject)
 
-# Add an executable target
-add_executable(MyProject src/main.cpp)
-```
+    # Add an executable target
+    add_executable(MyProject src/main.cpp)
+    ```
 
 3. **Generate Build Files**
 
-Open a terminal and navigate to the `MyProject` directory. Create a build directory and run CMake:
+    Open a terminal and navigate to the `MyProject` directory. Create a build directory and run CMake:
 
-```sh
-mkdir build
-cd build
-cmake ..
-```
+    ```sh
+    mkdir build
+    cd build
+    cmake ..
+    ```
 
-This command generates the necessary build files in the `build` directory. The `..` tells CMake to look for the `CMakeLists.txt` file in the parent directory.
+    This command generates the necessary build files in the `build` directory. The `..` tells CMake to look for the `CMakeLists.txt` file in the parent directory.
+
+    Or
+
+    Open a terminal, navigate to the MyProject directory, and create the build files:
+
+    ```sh
+    cd MyProject
+    cmake -S . -B build
+    ```
+
+    This command tells CMake to look for the CMakeLists.txt file in the current directory (-S .) and generate the build files in the build directory (-B build).
 
 4. **Build the Project**
 
-Still in the `build` directory, compile the project using the generated build files. For example, if CMake generated a Makefile, you can run:
+    Still in the `build` directory, compile the project using the generated build files. For example, if CMake generated a Makefile, you can run:
 
-```sh
-make
-```
+    ```sh
+    make
+    ```
 
-This will compile the `main.cpp` file and produce an executable named `MyProject` in the `build` directory.
+    This will compile the `main.cpp` file and produce an executable named `MyProject` in the `build` directory.
 
 5. **Run the Executable**
 
-```sh
-./MyProject
-```
+    ```sh
+    ./MyProject
+    ```
 
-This should output:
+    This should output:
 
-```
-Hello, World!
-```
+    ```
+    Hello, World!
+    ```
 
 ### Advanced CMake Features
 
@@ -137,13 +148,3 @@ add_test(NAME MyProjectTest COMMAND MyProject)
 ### Conclusion
 
 CMake is a powerful tool for managing the build process of software projects, particularly for those requiring cross-platform support. By writing a `CMakeLists.txt` file, you can define the structure and dependencies of your project, and CMake will handle the generation of the necessary build files. With a little practice, you'll find that CMake significantly simplifies the process of building complex projects.
-
-1. To generate build files:
-
-    ```sh
-    mkdir build
-    cd build
-    cmake ..
-    ```
-
-    This command generates the necessary build files in the build directory. The .. tells CMake to look for the CMakeLists.txt file in the parent directory.
